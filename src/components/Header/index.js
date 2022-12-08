@@ -2,12 +2,15 @@ import Button from "../Button";
 import { HeaderTitle, Wrapper } from "./styles";
 
 const Header = () => {
-  return (
-	<Wrapper>
-		<HeaderTitle>Task Tracker</HeaderTitle>
-		<Button text="Add" />
-	</Wrapper>
-  )
+	const onClick = () => {
+		console.log("Click!");
+	}
+	return (
+		<Wrapper>
+			<HeaderTitle>Task Tracker</HeaderTitle>
+			<Button text="Add" onClick={onClick} />
+		</Wrapper>
+	)
 }
 
 export default Header
