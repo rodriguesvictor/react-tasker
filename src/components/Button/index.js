@@ -1,8 +1,15 @@
 import { ButtonContainer } from "./styles";
-const Button = ({text}) => {
-  return (
-	<ButtonContainer>{text}</ButtonContainer>
-  )
+import PropTypes from "prop-types";
+
+const Button = ({ text, onClick }) => {
+
+	return (
+		<ButtonContainer onClick={onClick}>{text}</ButtonContainer>
+	)
 }
 
+Button.propTypes = {
+	text: PropTypes.string,
+	onClick: PropTypes.func,
+}
 export default Button
