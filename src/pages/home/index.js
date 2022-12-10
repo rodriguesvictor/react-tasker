@@ -1,11 +1,12 @@
 import Header from "../../components/Header";
 import Tasks from "../../components/Tasks";
+import TaskForm from "../../components/TaskForm";
 import { Container } from "./styles";
 import { useState } from "react"
 
 
 const Home = () => {
-
+	const [showAddTaskForm, setShowAddTaskForm] = useState(false);
 	const [tasks, setTasks] = useState([
 		{
 			id: 1,
@@ -19,7 +20,14 @@ const Home = () => {
 			day: 'Feb 5th at 2:30pm',
 			reminder: false,
 		},
-	])
+	]);
+
+	// Add Task
+	const handleAddTask = (task) => {
+		const id = Math.floor(Math.random() * 10000) + 1;
+		const newTask = { id, ...task };
+		setTasks([...tasks, newTask]);
+	}
 
 	// Delete Task
 	const handleDeleteTask = (id) => {
@@ -41,7 +49,8 @@ const Home = () => {
 	return (
 		<>
 			<Container>
-				<Header />
+				<Header onAdd={() => setShowAddTaskForm(!showAddTaskForm)} showAdd={showAddTaskForm}/>
+				{showAddTaskForm && <TaskForm onAdd={handleAddTask}/>}
 				{tasks.length > 0 ?
 					<Tasks tasks={tasks} onDelete={handleDeleteTask} onToggle={handleToggleReminder} />
 					: 'No Tasks To Show!'
