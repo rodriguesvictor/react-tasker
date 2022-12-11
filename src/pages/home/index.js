@@ -57,20 +57,31 @@ const Home = () => {
 	const handleDeleteTask = async (id) => {
 
 		await fetch(`http://localhost:8001/tasks/${id}`, {
-			method: "DELETE"
+			method: 'DELETE'
 		})
 		setTasks(tasks.filter((task) => task.id !== id))
 	}
 
 	// Toggle Reminder
 	const handleToggleReminder = async (id) => {
-		const taskToToggle = await fetchTask(id)
+		const taskToToggle = await fetchTask(id);
+		const updTask = {...taskToToggle, reminder: !taskToToggle.reminder};
+
+		const res = await fetch(`http://localhost:8001/tasks/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: JSON.stringify(updTask)
+		})
+
+		const data = await res.json();
 
 		setTasks(
 			tasks.map((task) =>
 				task.id === id ? {
 					...task, reminder:
-						!task.reminder
+						data.reminder
 				} : task
 			)
 		)
