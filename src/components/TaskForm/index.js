@@ -19,6 +19,7 @@ const TaskForm = ({ onAdd }) => {
 		setText('');
 		setDay('');
 		setReminder(false);
+
 	}
 	return (
 		<AddTaskForm onSubmit={onSubmit}>
