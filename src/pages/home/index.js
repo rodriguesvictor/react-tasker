@@ -3,6 +3,7 @@ import Tasks from "../../components/Tasks";
 import TaskForm from "../../components/TaskForm";
 import { Container } from "./styles";
 import { useState, useEffect } from "react"
+import Footer from "../../components/Footer";
 
 
 const Home = () => {
@@ -96,6 +97,7 @@ const Home = () => {
 					<Tasks tasks={tasks} onDelete={handleDeleteTask} onToggle={handleToggleReminder} />
 					: 'No Tasks To Show!'
 				}
+				<Footer />
 			</Container>
 		</>
 	)
