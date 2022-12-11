@@ -8,7 +8,7 @@ const Header = ({ title, onAdd, showAdd }) => {
 	return (
 		<Wrapper>
 			<HeaderTitle>{title}</HeaderTitle>
-			<Button color={showAdd ? "red" : "green"} text={showAdd ? "Close" : "Add"} onClick={onAdd} />
+			<Button color={showAdd ? "#FF7878" : "#54BAB9"} text={showAdd ? "Close" : "Add"} onClick={onAdd} />
 		</Wrapper>
 	)
 }
